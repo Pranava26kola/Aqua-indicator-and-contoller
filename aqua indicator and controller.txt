@@ -1,0 +1,27 @@
+#define GREEN A0
+#define RED A1
+float R1=0,G1=0;
+void setup() 
+{
+  pinMode(RED,OUTPUT);pinMode(GREEN,OUTPUT); pinMode(7,OUTPUT);
+  digitalWrite(7,LOW);digitalWrite(RED,HIGH);digitalWrite(GREEN,HIGH);
+  Serial.begin(57600);
+}
+void loop() 
+{
+  G1=analogRead(GREEN);
+  Serial.println(G1);
+  R1=analogRead(RED);
+  Serial.println(R1);
+  if(R1==1023)
+  {
+    digitalWrite(7,LOW);
+    Serial.print("MOTOR ON");
+  }
+  if(G1!=1023)
+  {
+    digitalWrite(7,HIGH); 
+    Serial.print("MOTOR OFF");
+  }
+  delay(2000);
+}
